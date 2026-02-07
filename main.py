@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 
+from routers.users import router as user_router
+from routers.movies import router as movie_router
+
 app = FastAPI()
 
-@app.get("/")
-async def read_root():
-    return {"message": "Hello, World!"}
+
+app.include_router(user_router)
+app.include_router(movie_router)
